@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/movie_item_container"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_4dp"
+        android:layout_height="@dimen/movie_item_height"
+        android:elevation="@dimen/margin_4dp"
+        android:foreground="?attr/selectableItemBackground">
+
+    <ImageView
+            android:id="@+id/movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/movie_title"/>
+
+    <TextView
+            android:id="@+id/movie_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorTitleMovie"
+            android:textStyle="bold"
+            android:paddingTop="4dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="4dp"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/movie_poster"
+            app:layout_constraintBottom_toTopOf="@+id/movie_popularity"/>
+
+    <TextView
+            android:id="@+id/movie_popularity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorTitleMovie"
+            android:paddingStart="0dp"
+            android:paddingEnd="@dimen/margin_4dp"
+            android:paddingBottom="@dimen/margin_16dp"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/movie_title"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

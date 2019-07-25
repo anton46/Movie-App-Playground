@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Movie App</string>
+    <string name="popularity">Popularity : %.1f</string>
+    <string name="book_movie">Book</string>
+    <string name="movie_details">Movie Details</string>
+    <string name="genres_list">Genres : %s</string>
+    <string name="language_list">Languages : %s</string>
+    <string name="error_message">Something went wrong</string>
+    <string name="loading_more_movies">Loading movies…</string>
+</resources>
