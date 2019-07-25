@@ -9,12 +9,12 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.movie.test"
+        applicationId "com.movie.app"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "com.movie.test.runner.MockWebServerRunner"
+        testInstrumentationRunner "com.movie.app.runner.MockWebServerRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
