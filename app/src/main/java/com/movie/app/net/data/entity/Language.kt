@@ -1,4 +1,4 @@
-package com.movie.app.domain.data.entity
+package com.movie.app.net.data.entity
 
 import com.google.gson.annotations.SerializedName
 

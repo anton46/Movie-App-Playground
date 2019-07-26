@@ -1,8 +1,8 @@
 package com.movie.app.ui.details
 
-import com.movie.app.domain.data.entity.Genre
-import com.movie.app.domain.data.entity.Language
-import com.movie.app.domain.data.response.MovieDetailResponse
+import com.movie.app.net.data.entity.Genre
+import com.movie.app.net.data.entity.Language
+import com.movie.app.net.data.response.MovieDetailResponse
 import com.movie.app.domain.repository.IMovieRepository
 import com.movie.app.net.rx.ISchedulerFactory
 import com.movie.app.ui.details.mapper.IMovieDetailsMapper
@@ -73,7 +73,6 @@ class MovieDetailsPresenterTest {
         verify(view).showLoading()
         verify(movieRepository).fetchMovieDetails(1)
         verify(view).showContent(expectedViewModel)
-        val a = BigInteger("123456")
     }
 
     @Test

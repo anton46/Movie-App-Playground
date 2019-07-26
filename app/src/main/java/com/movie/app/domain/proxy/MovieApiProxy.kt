@@ -1,8 +1,8 @@
 package com.movie.app.domain.proxy
 
 import com.movie.app.domain.api.MovieApi
-import com.movie.app.domain.data.response.MovieDetailResponse
-import com.movie.app.domain.data.response.MoviesResponse
+import com.movie.app.net.data.response.MovieDetailResponse
+import com.movie.app.net.data.response.MoviesResponse
 import com.movie.app.net.provider.ApiProvider
 import com.movie.app.net.provider.ApiProxy
 import rx.Scheduler

@@ -1,1 +1,2 @@
-[![CircleCI](https://circleci.com/gh/anton46/Movie-App-Playground.svg?style=svg)](https://circleci.com/gh/anton46/Movie-App-Playground)
+[![Build Status](https://travis-ci.org/anton46/Movie-App-Playground.svg?branch=master)](hhttps://travis-ci.org/anton46/Movie-App-Playground)
+[![codecov.io](https://codecov.io/gh/anton46/movie-app-playground/branch/master/graph/badge.svg)](https://codecov.io/gh/anton46/movie-app-playground)
