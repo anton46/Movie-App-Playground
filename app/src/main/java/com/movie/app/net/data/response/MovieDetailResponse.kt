@@ -1,8 +1,8 @@
-package com.movie.app.domain.data.response
+package com.movie.app.net.data.response
 
 import com.google.gson.annotations.SerializedName
-import com.movie.app.domain.data.entity.Genre
-import com.movie.app.domain.data.entity.Language
+import com.movie.app.net.data.entity.Genre
+import com.movie.app.net.data.entity.Language
 
 data class MovieDetailResponse(
     @SerializedName("title") val title: String,

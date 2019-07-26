@@ -1,7 +1,7 @@
 package com.movie.app.ui.home
 
-import com.movie.app.domain.data.entity.Movie
-import com.movie.app.domain.data.response.MoviesResponse
+import com.movie.app.net.data.entity.Movie
+import com.movie.app.net.data.response.MoviesResponse
 import com.movie.app.domain.repository.IMovieRepository
 import com.movie.app.net.rx.ISchedulerFactory
 import com.movie.app.ui.home.mapper.IHomeViewModelMapper

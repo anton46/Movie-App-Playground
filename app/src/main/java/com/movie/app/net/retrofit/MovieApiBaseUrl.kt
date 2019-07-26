@@ -10,7 +10,7 @@ class MovieApiBaseUrl(networkSettingsProvider: NetworkSettingsProvider) : Abstra
         else -> MOCK
     }
 
-    override fun getPathForEnvironment(): String? = null
+    override fun getPathForEnvironment(): String = ""
 
     companion object {
         const val HOST = "api.themoviedb.org"

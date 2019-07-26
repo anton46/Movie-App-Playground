@@ -1,8 +1,8 @@
 package com.movie.app.net.retrofit
 
-import okhttp3.HttpUrl
 import com.movie.app.net.settings.NetworkSettingsProvider
 import com.movie.app.net.settings.ServerEnvironment
+import okhttp3.HttpUrl
 
 abstract class AbstractBaseUrl(networkSettingsProvider: NetworkSettingsProvider) : IBaseUrlProvider {
 
@@ -12,13 +12,13 @@ abstract class AbstractBaseUrl(networkSettingsProvider: NetworkSettingsProvider)
         val builder = HttpUrl.Builder()
 
         builder.scheme("http")
-        builder.host(getHostForEnvironment(networkSettingsProvider.getServerEnvirontment()))
+        builder.host(this.getHostForEnvironment(networkSettingsProvider.getServerEnvirontment()))
 
         if (networkSettingsProvider.getServerEnvirontment() == ServerEnvironment.MOCK) {
             builder.port(8080)
         }
 
-        getPathForEnvironment()?.let {
+        this.getPathForEnvironment().let {
             builder.encodedPath(getPathForEnvironment())
         }
         // terminate path with a "/" so the API endpoint paths are appended at the end
@@ -33,5 +33,5 @@ abstract class AbstractBaseUrl(networkSettingsProvider: NetworkSettingsProvider)
 
     abstract fun getHostForEnvironment(environment: ServerEnvironment): String
 
-    abstract fun getPathForEnvironment(): String?
+    abstract fun getPathForEnvironment(): String
 }

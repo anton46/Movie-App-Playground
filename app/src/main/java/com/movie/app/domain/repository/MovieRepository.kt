@@ -2,8 +2,8 @@ package com.movie.app.domain.repository
 
 import com.movie.app.core.IDateTimeHelper
 import com.movie.app.domain.api.MovieApi
-import com.movie.app.domain.data.response.MovieDetailResponse
-import com.movie.app.domain.data.response.MoviesResponse
+import com.movie.app.net.data.response.MovieDetailResponse
+import com.movie.app.net.data.response.MoviesResponse
 import rx.Single
 
 class MovieRepository(

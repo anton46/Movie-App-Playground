@@ -1,6 +1,6 @@
 package com.movie.app.ui.details.mapper
 
-import com.movie.app.domain.data.response.MovieDetailResponse
+import com.movie.app.net.data.response.MovieDetailResponse
 import com.movie.app.net.factory.ImageUrlFactory
 import com.movie.app.ui.details.model.MovieDetailsViewModel
 

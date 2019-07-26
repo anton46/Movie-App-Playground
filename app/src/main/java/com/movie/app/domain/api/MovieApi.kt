@@ -1,9 +1,9 @@
 package com.movie.app.domain.api
 
-import com.movie.app.domain.data.response.MovieDetailResponse
+import com.movie.app.net.data.response.MovieDetailResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
-import com.movie.app.domain.data.response.MoviesResponse
+import com.movie.app.net.data.response.MoviesResponse
 import retrofit2.http.Path
 import rx.Single
 
