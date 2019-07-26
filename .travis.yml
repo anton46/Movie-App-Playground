@@ -40,4 +40,4 @@ before_script:
 script:
   - ./gradlew build jacocoDebugUnitTestReport
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -t 06eb5559-6e59-48a5-be6d-d66344371c60
