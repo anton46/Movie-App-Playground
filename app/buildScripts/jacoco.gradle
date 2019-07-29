@@ -43,7 +43,7 @@ project.afterEvaluate {
                     "**/*_Provide*Factory*.*",
 
                     //Data classes
-                    "*com.movie.app.net.data.entity/**",
+                    "*com/movie/app/net/data/entity/**",
                     "**/*ViewModel.*" // Modules for Dagger.
             ]
             def javaClasses = fileTree(dir: variant.javaCompiler.destinationDir, excludes: excludes)
