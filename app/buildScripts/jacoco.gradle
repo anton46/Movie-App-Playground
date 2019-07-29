@@ -33,10 +33,18 @@ project.afterEvaluate {
                     '**/Manifest*.*',
                     '**/*Test*.*',
                     'android/**/*.*',
-                    '**/*_MembersInjector.class',
                     '**/Dagger*Component.class',
                     '**/Dagger*Component$Builder.class',
-                    '**/*Module_*Factory.class'
+                    '**/*Module_*Factory.class',
+                    "**/*Module.*", // Modules for Dagger.
+                    "**/*Module.*", // Modules for Dagger.
+                    "**/*Dagger*.*", // Dagger auto-generated code.
+                    "**/*MembersInjector*.*", // Dagger auto-generated code.
+                    "**/*_Provide*Factory*.*",
+
+                    //Data classes
+                    "*com.movie.app.net.data.entity/**",
+                    "**/*ViewModel.*" // Modules for Dagger.
             ]
             def javaClasses = fileTree(dir: variant.javaCompiler.destinationDir, excludes: excludes)
             def kotlinClasses = fileTree(dir: "${buildDir}/tmp/kotlin-classes/${variantName}", excludes: excludes)
