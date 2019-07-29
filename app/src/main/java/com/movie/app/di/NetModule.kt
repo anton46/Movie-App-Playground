@@ -13,6 +13,7 @@ import com.movie.app.domain.proxy.MovieApiProxy
 import com.movie.app.net.factory.ApiFactory
 import com.movie.app.net.factory.GenericApiFactory
 import com.movie.app.net.factory.ImageUrlFactory
+import com.movie.app.net.factory.ImageUrlFactoryImpl
 import com.movie.app.net.provider.ApiProvider
 import com.movie.app.net.provider.ApiProviderFactory
 import com.movie.app.net.provider.DefaultApiProvider
@@ -123,7 +124,7 @@ class NetModule {
 
     @Singleton
     @Provides
-    fun providesImageUrlFactory(): ImageUrlFactory = ImageUrlFactory()
+    fun providesImageUrlFactory(): ImageUrlFactory = ImageUrlFactoryImpl()
 
     companion object {
         private const val LOG_TAG = "HTTP"
