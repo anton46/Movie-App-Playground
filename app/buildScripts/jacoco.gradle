@@ -44,7 +44,16 @@ project.afterEvaluate {
 
                     //Data classes
                     "*com/movie/app/net/data/entity/**",
-                    "**/*ViewModel.*" // Modules for Dagger.
+                    "*com/movie/app/net/data/response/**",
+                    "**/*ViewModel.*", // Modules for Dagger.
+
+                    //RX
+                    "*com/movie/app/net/rx/transformer/RetryTransformers.class",
+                    "*com/movie/app/net/rx/SchedulerFactory.class",
+                    "*com/movie/app/net/provider/**",
+
+                    //Settings
+                    "*com/movie/app/net/settings/AppNetworkSettings.class"
             ]
             def javaClasses = fileTree(dir: variant.javaCompiler.destinationDir, excludes: excludes)
             def kotlinClasses = fileTree(dir: "${buildDir}/tmp/kotlin-classes/${variantName}", excludes: excludes)
