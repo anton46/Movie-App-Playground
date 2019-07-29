@@ -44,7 +44,7 @@ project.afterEvaluate {
 
                     //Data classes
                     "*com.movie.app.net.data.entity/**",
-                    "**/*ViewModel.*", // Modules for Dagger.
+                    "**/*ViewModel.*" // Modules for Dagger.
             ]
             def javaClasses = fileTree(dir: variant.javaCompiler.destinationDir, excludes: excludes)
             def kotlinClasses = fileTree(dir: "${buildDir}/tmp/kotlin-classes/${variantName}", excludes: excludes)
