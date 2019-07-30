@@ -37,10 +37,10 @@ project.afterEvaluate {
                     '**/Dagger*Component$Builder.class',
                     '**/*Module_*Factory.class',
                     "**/*Module.*", // Modules for Dagger.
-                    "**/*Module.*", // Modules for Dagger.
                     "**/*Dagger*.*", // Dagger auto-generated code.
                     "**/*MembersInjector*.*", // Dagger auto-generated code.
                     "**/*_Provide*Factory*.*",
+                    "*com/movie/app/di/**",
 
                     //Data classes
                     "*com/movie/app/net/data/entity/**",
