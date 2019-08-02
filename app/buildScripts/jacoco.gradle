@@ -53,7 +53,15 @@ project.afterEvaluate {
                     "*com/movie/app/net/provider/**",
 
                     //Settings
-                    "*com/movie/app/net/settings/AppNetworkSettings.class"
+                    "*com/movie/app/net/settings/AppNetworkSettings.class",
+                    "*com/movie/app/net/settings/ServerEnvironment.class",
+                    "*com/movie/app/net/retrofit/GsonResponseBodyConverter.class",
+                    "*com/movie/app/net/retrofit/GsonConverterFactory.class",
+                    "*com/movie/app/net/strategy/DefaultRetryStrategy.class",
+
+                    //UI
+                    "*com/movie/app/ui/base/BaseActivity.class",
+                    "*com/movie/app/ui/base/BaseActivity.class",
             ]
             def javaClasses = fileTree(dir: variant.javaCompiler.destinationDir, excludes: excludes)
             def kotlinClasses = fileTree(dir: "${buildDir}/tmp/kotlin-classes/${variantName}", excludes: excludes)
