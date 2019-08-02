@@ -11,10 +11,12 @@ A lightweight sample of scalable and testable android app. This project consists
 - Espresso (Kakao)
 - Mockito
 - MockWebserver
-- So on
+- CI/CD Configuration (Travis)
+- Jacoco Report configuration  
+- Code coverage (CodeCov)
+- Codacy (Static Analysis)
 
 Contribute? yes please! You can add anything cool stuff to this project.
-
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fanton46%2FMovie-App-Playground.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fanton46%2FMovie-App-Playground?ref=badge_large)
