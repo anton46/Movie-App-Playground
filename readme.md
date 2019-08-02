@@ -4,9 +4,8 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fanton46%2FMovie-App-Playground.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fanton46%2FMovie-App-Playground?ref=badge_shield)
 
 # Movie App Playground
-
-![alt text](https://github.com/anton46/Movie-App-Playground/blob/master/screenshots/sc1.png "SC 1")
-![alt text](https://github.com/anton46/Movie-App-Playground/blob/master/screenshots/sc2.png "SC 2")
+![alt text](https://github.com/anton46/Movie-App-Playground/blob/master/screenshots/sc2.png =300px)
+![alt text](https://github.com/anton46/Movie-App-Playground/blob/master/screenshots/sc1.png =300px)
 
 A lightweight sample of scalable and testable android app. This project consists :
 - MPV - Clean Architecture
