@@ -12,14 +12,14 @@ abstract class AbstractBaseUrl(networkSettingsProvider: NetworkSettingsProvider)
         val builder = HttpUrl.Builder()
 
         builder.scheme("http")
-        builder.host(this.getHostForEnvironment(networkSettingsProvider.getServerEnvirontment()))
+        builder.host(this.getHostForEnvironment(networkSettingsProvider.getServerEnvironment()))
 
-        if (networkSettingsProvider.getServerEnvirontment() == ServerEnvironment.MOCK) {
+        if (networkSettingsProvider.getServerEnvironment() == ServerEnvironment.MOCK) {
             builder.port(8080)
         }
 
-        this.getPathForEnvironment().let {
-            builder.encodedPath(getPathForEnvironment())
+        this.getPathForEnvironment()?.let {
+            builder.encodedPath(it)
         }
         // terminate path with a "/" so the API endpoint paths are appended at the end
         builder.addPathSegment("")
@@ -31,7 +31,7 @@ abstract class AbstractBaseUrl(networkSettingsProvider: NetworkSettingsProvider)
         return url
     }
 
-    abstract fun getHostForEnvironment(environment: ServerEnvironment): String
+    abstract fun getHostForEnvironment(environment: ServerEnvironment?): String
 
-    abstract fun getPathForEnvironment(): String
+    abstract fun getPathForEnvironment(): String?
 }
