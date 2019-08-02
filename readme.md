@@ -16,6 +16,9 @@ A lightweight sample of scalable and testable android app. This project consists
 - Code coverage (CodeCov)
 - Codacy (Static Analysis)
 
+API
+- [The Movie DB](http://themoviedb.org)
+
 Contribute? yes please! You can add anything cool stuff to this project.
 
 ## License
