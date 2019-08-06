@@ -61,7 +61,10 @@ project.afterEvaluate {
 
                     //UI
                     "*com/movie/app/ui/base/BaseActivity.class",
-                    "*com/movie/app/ui/base/BaseActivity.class",
+
+                    //OkHttp
+                    "*com/movie/app/domain/proxy/MovieApiProxy.class",
+                    "*com/movie/app/domain/api/MovieApi.class"
             ]
             def javaClasses = fileTree(dir: variant.javaCompiler.destinationDir, excludes: excludes)
             def kotlinClasses = fileTree(dir: "${buildDir}/tmp/kotlin-classes/${variantName}", excludes: excludes)
