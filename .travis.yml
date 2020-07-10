@@ -23,6 +23,7 @@ before_install:
   - touch $HOME/.android/repositories.cfg
   - yes | sdkmanager "platforms;android-28"
   - yes | sdkmanager "build-tools;28.0.3"
+  - bundle install
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -37,7 +38,12 @@ cache:
 before_script:
   - chmod +x gradlew
 
+install:
+  - ./gradlew runChecksForDanger
+  - bundle exec danger
+
 script:
   - ./gradlew build jacocoDebugUnitTestReport
+
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 06eb5559-6e59-48a5-be6d-d66344371c60

@@ -15,11 +15,10 @@ import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner
 import rx.Single
 import rx.schedulers.TestScheduler
-import java.math.BigInteger
 
 
 @RunWith(MockitoJUnitRunner::class)
-class MovieDetailsPresenterTest {
+class MovieDetailsPresenterSecondTest {
 
     private val testScheduler = TestScheduler()
 
@@ -47,43 +46,14 @@ class MovieDetailsPresenterTest {
     }
 
     @Test
-    fun `test load on success flow`() {
-        val expectedResponse = MovieDetailResponse(
-            "title",
-            "url",
-            listOf(Genre(1, "genre-1")),
-            listOf(Language("en", "English")),
-            "Synopsis"
-        )
-
-        val expectedViewModel = MovieDetailsViewModel(
-            "title",
-            "url",
-            "Synopsis",
-            listOf("English"),
-            listOf("genre-1")
-        )
-
-        `when`(movieRepository.fetchMovieDetails(1)).thenReturn(Single.just(expectedResponse))
-        `when`(mapper.map(expectedResponse)).thenReturn(expectedViewModel)
-
-        presenter.fetchDetails(1)
-        testScheduler.triggerActions()
-
-        verify(view).showLoading()
-        verify(movieRepository).fetchMovieDetails(1)
-        verify(view).showContent(expectedViewModel)
-    }
-
-    @Test
     fun `test load on error flow`() {
-        `when`(movieRepository.fetchMovieDetails(1)).thenReturn(Single.error(Exception()))
+        `when`(movieRepository.fetchMovieDetails(2)).thenReturn(Single.error(Exception()))
 
-        presenter.fetchDetails(1)
+        presenter.fetchDetails(2)
         testScheduler.triggerActions()
 
         verify(view).showLoading()
-        verify(movieRepository).fetchMovieDetails(1)
+        verify(movieRepository).fetchMovieDetails(2)
         verify(view).showError()
     }
 }
