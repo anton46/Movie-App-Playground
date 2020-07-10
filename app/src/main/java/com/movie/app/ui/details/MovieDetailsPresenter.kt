@@ -13,6 +13,13 @@ class MovieDetailsPresenter(
 ) : BasePresenter<MovieDetailsView, MovieDetailsViewModel>() {
 
     fun fetchDetails(movieId: Int) {
+        var a = 0
+        if (movieId == 1) {
+            a == 100
+        } else {
+            a == 300
+        }
+
         subscribe {
             repository.fetchMovieDetails(movieId)
                 .map(mapper::map)
