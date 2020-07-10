@@ -38,12 +38,9 @@ cache:
 before_script:
   - chmod +x gradlew
 
-install:
-  - ./gradlew runChecksForDanger
-  - bundle exec danger
-
 script:
   - ./gradlew build jacocoDebugUnitTestReport
+  - bundle exec danger
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 06eb5559-6e59-48a5-be6d-d66344371c60
