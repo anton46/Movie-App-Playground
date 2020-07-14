@@ -17,5 +17,4 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run:
-      - ./gradlew build jacocoDebugUnitTestReport
+      run: ./gradlew build jacocoDebugUnitTestReport
