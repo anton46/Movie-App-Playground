@@ -18,4 +18,5 @@ class MovieRepository(
     companion object {
         private const val MIN_VOTE_COUNT = 50
     }
+
 }

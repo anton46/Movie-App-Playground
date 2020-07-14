@@ -1,4 +1,4 @@
-danger.import_plugin('danger/detekt_parser.rb')
+github.dismiss_out_of_range_messages
 
 # Make it more obvious that a PR is a work in progress and shouldn't be merged yet
 warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
@@ -20,10 +20,12 @@ jacoco.report("app/build/reports/jacoco/jacocoDebugUnitTestReport/jacocoDebugUni
 tests = Hash.new
 tests["app"]="app/build/test-results/*/*.xml"
 
-# Detekt
-begin
-  detekt_parser.generate_report
-rescue Exception => e
-  fail "Did you forget to run Detekt? #{e}"
-end
-#
+# ktlint
+checkstyle_format.base_path = Dir.pwd
+checkstyle_format.report "app/build/reports/ktlint/ktlint-report.xml"
+
+# AndroidLint
+android_lint.report_file = "app/build/reports/lint/lint-report.xml"
+android_lint.skip_gradle_task = true
+android_lint.severity = "Error"
+android_lint.lint(inline_mode: true)
