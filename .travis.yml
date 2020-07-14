@@ -39,6 +39,7 @@ before_script:
   - chmod +x gradlew
 
 script:
+  - ./gradlew runChecksForDanger
   - ./gradlew build jacocoDebugUnitTestReport
   - gem install danger-jacoco
   - bundle exec danger
