@@ -1,0 +1,15 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+group 'com.danger.kotlin.plugin.test'
+version '0.0.1'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compileOnly "systems.danger:danger-kotlin-sdk:1.0"
+
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

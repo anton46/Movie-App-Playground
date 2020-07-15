@@ -1,3 +1,6 @@
+@file:DependsOn("./danger-kotlin-test/build/libs/danger-kotlin-test-0.0.1.jar")
+
+import com.danger.kotlin.plugin.test.TestPlugin
 import systems.danger.kotlin.danger
 import systems.danger.kotlin.message
 import systems.danger.kotlin.onGitHub
@@ -22,6 +25,8 @@ danger(args) {
         }
 
         message("Great work @${pullRequest.user.login} 🎉 , You might find a few suggestions from me for this Pull Request below 🙂")
+
+        TestPlugin().helloPlugin()
     }
 }
 
