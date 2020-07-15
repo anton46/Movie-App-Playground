@@ -1,10 +1,9 @@
 @file:DependsOn("./danger-kotlin-test/build/libs/danger-kotlin-test-0.0.1.jar")
 
 import com.danger.kotlin.plugin.test.TestPlugin
-import systems.danger.kotlin.danger
-import systems.danger.kotlin.message
-import systems.danger.kotlin.onGitHub
-import systems.danger.kotlin.warn
+import systems.danger.kotlin.*
+
+register plugin TestPlugin
 
 danger(args) {
 
