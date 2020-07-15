@@ -36,4 +36,4 @@ captures/
 *.iml
 .idea/*
 
-
+.bitrise.secrets.yml
