@@ -19,7 +19,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build jacocoDebugUnitTestReport
     - name: Danger
-        uses: danger/kotlin@v0.6.0
+        uses: danger/kotlin@master
         args: "--id DangerKotlinAction"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
