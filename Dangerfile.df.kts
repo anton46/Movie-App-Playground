@@ -1,9 +1,11 @@
-import systems.danger.kotlin.*
+import systems.danger.kotlin.danger
+import systems.danger.kotlin.message
+import systems.danger.kotlin.onGitHub
+import systems.danger.kotlin.warn
 
 danger(args) {
 
     val allSourceFiles = git.modifiedFiles + git.createdFiles
-    val changelogChanged = allSourceFiles.contains("CHANGELOG.md")
     val sourceChanges = allSourceFiles.firstOrNull { it.contains("src") }
 
     onGitHub {
@@ -18,5 +20,8 @@ danger(args) {
         if (pullRequest.title.contains("WIP", false)) {
             warn("PR is classed as Work in Progress")
         }
+
+        message("Great work @${pullRequest.user.login} 🎉 , You might find a few suggestions from me for this Pull Request below 🙂")
     }
 }
+
