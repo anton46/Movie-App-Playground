@@ -2,7 +2,7 @@ package com.danger.kotlin.plugin.test
 
 import systems.danger.kotlin.sdk.DangerPlugin
 
-class TestPlugin : DangerPlugin() {
+object TestPlugin : DangerPlugin() {
 
     override val id: String
         get() = this.javaClass.name
