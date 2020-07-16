@@ -25,7 +25,7 @@ danger(args) {
 
         message("Great work @${pullRequest.user.login} 🎉 , You might find a few suggestions from me for this Pull Request below 🙂")
 
-        TestPlugin.helloPlugin()
+        TestPlugin.execute()
     }
 }
 
