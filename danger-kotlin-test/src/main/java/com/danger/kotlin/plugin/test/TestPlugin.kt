@@ -10,18 +10,20 @@ object TestPlugin : DangerPlugin() {
 
     fun execute() {
         context.message("Hello Danger Plugin!")
-        context.markdown("### Jacoco code coverage ${getCoverageReport()}")
+        runCoverageReport()
+
     }
 
-    private fun getCoverageReport(): String {
+    private fun runCoverageReport() {
         val coverageRegex = "Total.*?([0-9]{0,3})%".toRegex()
         val coverageReport =
             File("./app/build/reports/jacoco/jacocoDebugUnitTestReport/html/index.html").readText()
         val coveragePercentageMatch = coverageRegex.find(coverageReport)
         coveragePercentageMatch?.let {
             val coveragePercentage = it.value.split(">").last()
-            println(coveragePercentage)
+            context.markdown("### Jacoco code coverage $coveragePercentage :white_check_mark:")
+        } ?: kotlin.run {
+            context.warn("Forget to run coverage report tasks?")
         }
-        return ""
     }
 }
