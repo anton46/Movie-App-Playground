@@ -26,7 +26,3 @@ object JacocoReportPlugin : InternalReportPlugin {
         minimumProjectCoverage = 75.0
     )
 }
-
-fun main() {
-    println(JacocoReportPlugin.report())
-}
