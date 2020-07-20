@@ -25,6 +25,7 @@ before_install:
   - yes | sdkmanager "build-tools;28.0.3"
   - curl -s "https://get.sdkman.io" | bash
   - source ~/.bash_profile
+  - sdk install kotlin
   - curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
   - sudo apt-get install nodejs
   - sudo apt-get install build-essential
@@ -47,7 +48,7 @@ before_script:
 script:
   #- ./gradlew runChecksForDanger
   - ./gradlew build jacocoDebugUnitTestReport
-  - DEBUG='*' danger-kotlin ci
+  -  danger-kotlin ci
   #- gem install danger-jacoco
   #- bundle exec danger
 
