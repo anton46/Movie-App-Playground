@@ -26,10 +26,10 @@ before_install:
   - curl -s "https://get.sdkman.io" | bash
   - source ~/.bash_profile
   - sdk install kotlin
-  - curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+  - curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
   - sudo apt-get install nodejs
   - sudo apt-get install build-essential
-  - npm install -g danger@7.1.4
+  - sudo npm install -g danger@7.1.4
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
