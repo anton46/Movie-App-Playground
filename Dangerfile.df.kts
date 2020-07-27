@@ -5,21 +5,21 @@ import com.danger.kotlin.plugin.test.model.DataMapper
 import com.danger.kotlin.plugin.test.model.DataMapper.Companion.arrayToListMapper
 import systems.danger.kotlin.*
 
-typealias GitHubClient = jp.ne.paypay.android.danger.model.GitHub
-typealias GitHubIssueClient = jp.ne.paypay.android.danger.model.GitHubIssue
-typealias GitHubUserClient = jp.ne.paypay.android.danger.model.GitHubUser
-typealias GithubTeamClient = jp.ne.paypay.android.danger.model.GitHubTeam
-typealias GitHubPRClient = jp.ne.paypay.android.danger.model.GitHubPR
-typealias GitHubMilestoneClient = jp.ne.paypay.android.danger.model.GitHubMilestone
-typealias GitHubIssueLabelClient = jp.ne.paypay.android.danger.model.GitHubIssueLabel
-typealias GitHubMergeRefClient = jp.ne.paypay.android.danger.model.GitHubMergeRef
-typealias GitHubRepoClient = jp.ne.paypay.android.danger.model.GitHubRepo
-typealias GitHubCommitClient = jp.ne.paypay.android.danger.model.GitHubCommit
-typealias GitHubReviewClient = jp.ne.paypay.android.danger.model.GitHubReview
-typealias GitHubRequestedReviewersClient = jp.ne.paypay.android.danger.model.GitHubRequestedReviewers
-typealias GitClient = jp.ne.paypay.android.danger.model.Git
-typealias GitCommitClient = jp.ne.paypay.android.danger.model.Git.GitCommit
-typealias GitCommitAuthorClient = jp.ne.paypay.android.danger.model.Git.GitCommitAuthor
+typealias GitHubClient = com.danger.kotlin.plugin.test.model.GitHub
+typealias GitHubIssueClient = com.danger.kotlin.plugin.test.model.GitHubIssue
+typealias GitHubUserClient = com.danger.kotlin.plugin.test.model.GitHubUser
+typealias GithubTeamClient = com.danger.kotlin.plugin.test.model.GitHubTeam
+typealias GitHubPRClient = com.danger.kotlin.plugin.test.model.GitHubPR
+typealias GitHubMilestoneClient = com.danger.kotlin.plugin.test.model.GitHubMilestone
+typealias GitHubIssueLabelClient = com.danger.kotlin.plugin.test.model.GitHubIssueLabel
+typealias GitHubMergeRefClient = com.danger.kotlin.plugin.test.model.GitHubMergeRef
+typealias GitHubRepoClient = com.danger.kotlin.plugin.test.model.GitHubRepo
+typealias GitHubCommitClient = com.danger.kotlin.plugin.test.model.GitHubCommit
+typealias GitHubReviewClient = com.danger.kotlin.plugin.test.model.GitHubReview
+typealias GitHubRequestedReviewersClient = com.danger.kotlin.plugin.test.model.GitHubRequestedReviewers
+typealias GitClient = com.danger.kotlin.plugin.test.model.Git
+typealias GitCommitClient = com.danger.kotlin.plugin.test.model.Git.GitCommit
+typealias GitCommitAuthorClient = com.danger.kotlin.plugin.test.model.Git.GitCommitAuthor
 
 register plugin TestPlugin
 
