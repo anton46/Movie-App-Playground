@@ -49,8 +49,8 @@ danger(args) {
 
     val gitCommitAuthorMapper = DataMapper<GitCommitAuthor, GitCommitAuthorClient>()
     val gitCommitMapper = DataMapper<GitCommit, GitCommitClient>()
-        .register("author", arrayToListMapper(gitCommitAuthorMapper))
-        .register("committer", arrayToListMapper(gitCommitAuthorMapper))
+        .register("author", gitCommitAuthorMapper)
+        .register("committer", gitCommitAuthorMapper)
 
     onGit {
         TestPlugin.initGit {
@@ -102,6 +102,7 @@ danger(args) {
                 .register("pullRequest", githubPRMapper)
                 .register("commits", arrayToListMapper(githubCommitMapper))
                 .register("reviews", arrayToListMapper(githubReviewMapper))
+                .register("requestedReviewers", gitHubRequestedReviewersMapper)
             gitHubMapper(this)
         }
         TestPlugin.execute()
