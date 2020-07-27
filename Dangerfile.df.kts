@@ -2,10 +2,13 @@
 
 import com.danger.kotlin.plugin.test.TestPlugin
 import com.danger.kotlin.plugin.test.model.DataMapper
+import com.danger.kotlin.plugin.test.model.Mapper
 import com.danger.kotlin.plugin.test.model.DataMapper.Companion.arrayToListMapper
 import systems.danger.kotlin.*
 
 typealias GitHubClient = com.danger.kotlin.plugin.test.model.GitHub
+typealias GitHubUserTypeClient = com.danger.kotlin.plugin.test.model.GitHubUserType
+typealias GitHubIssueClientState = com.danger.kotlin.plugin.test.model.GitHubIssueState
 typealias GitHubIssueClient = com.danger.kotlin.plugin.test.model.GitHubIssue
 typealias GitHubUserClient = com.danger.kotlin.plugin.test.model.GitHubUser
 typealias GithubTeamClient = com.danger.kotlin.plugin.test.model.GitHubTeam
@@ -17,6 +20,9 @@ typealias GitHubRepoClient = com.danger.kotlin.plugin.test.model.GitHubRepo
 typealias GitHubCommitClient = com.danger.kotlin.plugin.test.model.GitHubCommit
 typealias GitHubReviewClient = com.danger.kotlin.plugin.test.model.GitHubReview
 typealias GitHubRequestedReviewersClient = com.danger.kotlin.plugin.test.model.GitHubRequestedReviewers
+typealias GitHubPullRequestStateClient = com.danger.kotlin.plugin.test.model.GitHubPullRequestState
+typealias GitHubReviewStateClient = com.danger.kotlin.plugin.test.model.GitHubReviewState
+typealias GitHubMilestoneStateClient = com.danger.kotlin.plugin.test.model.GitHubMilestoneState
 typealias GitClient = com.danger.kotlin.plugin.test.model.Git
 typealias GitCommitClient = com.danger.kotlin.plugin.test.model.Git.GitCommit
 typealias GitCommitAuthorClient = com.danger.kotlin.plugin.test.model.Git.GitCommitAuthor
@@ -52,7 +58,50 @@ danger(args) {
         .register("author", gitCommitAuthorMapper)
         .register("committer", gitCommitAuthorMapper)
 
-    onGit {
+    val gitHubUserTypeMapper = object : Mapper<GitHubUserType, GitHubUserTypeClient> {
+        override fun invoke(data: GitHubUserType) = when (data) {
+            GitHubUserType.USER -> GitHubUserTypeClient.USER
+            GitHubUserType.BOT -> GitHubUserTypeClient.BOT
+            GitHubUserType.ORGANIZATION -> GitHubUserTypeClient.ORGANIZATION
+        }
+    }
+
+    val gitHubIssueStateMapper = object : Mapper<GitHubIssueState, GitHubIssueClientState> {
+        override fun invoke(state: GitHubIssueState) = when (state) {
+            GitHubIssueState.OPEN -> GitHubIssueClientState.OPEN
+            GitHubIssueState.CLOSED -> GitHubIssueClientState.CLOSED
+            GitHubIssueState.LOCKED -> GitHubIssueClientState.LOCKED
+        }
+    }
+
+    val gitHubPullRequestStateMapper = object : Mapper<GitHubPullRequestState, GitHubPullRequestStateClient> {
+        override fun invoke(state: GitHubPullRequestState) = when (state) {
+            GitHubPullRequestState.OPEN -> GitHubPullRequestStateClient.OPEN
+            GitHubPullRequestState.CLOSED -> GitHubPullRequestStateClient.CLOSED
+            GitHubPullRequestState.LOCKED -> GitHubPullRequestStateClient.LOCKED
+            GitHubPullRequestState.MERGED -> GitHubPullRequestStateClient.MERGED
+        }
+    }
+
+    val gitHubReviewStateMapper = object : Mapper<GitHubReviewState, GitHubReviewStateClient> {
+        override fun invoke(state: GitHubReviewState) = when (state) {
+            GitHubReviewState.APPROVED -> GitHubReviewStateClient.APPROVED
+            GitHubReviewState.CHANGES_REQUESTED -> GitHubReviewStateClient.CHANGES_REQUESTED
+            GitHubReviewState.COMMENTED -> GitHubReviewStateClient.COMMENTED
+            GitHubReviewState.DISMISSED -> GitHubReviewStateClient.DISMISSED
+            GitHubReviewState.PENDING -> GitHubReviewStateClient.PENDING
+        }
+    }
+
+    val gitHubMilestoneStateMapper = object : Mapper<GitHubMilestoneState, GitHubMilestoneStateClient> {
+        override fun invoke(state: GitHubMilestoneState) = when (state) {
+            GitHubMilestoneState.OPEN -> GitHubMilestoneStateClient.OPEN
+            GitHubMilestoneState.CLOSE -> GitHubMilestoneStateClient.CLOSE
+            GitHubMilestoneState.ALL -> GitHubMilestoneStateClient.ALL
+        }
+    }
+
+    /*onGit {
         TestPlugin.initGit {
             val gitMapper = DataMapper<Git, GitClient>()
                 .register("commits", arrayToListMapper(gitCommitMapper))
@@ -61,13 +110,15 @@ danger(args) {
                 .register("deletedFiles", arrayToListMapper<String>())
             gitMapper(this)
         }
-    }
+    }*/
 
     onGitHub {
         TestPlugin.initGitHub {
             val githubUserMapper = DataMapper<GitHubUser, GitHubUserClient>()
+                .register("type", gitHubUserTypeMapper)
             val githubTeamMapper = DataMapper<GitHubTeam, GithubTeamClient>()
             val gitHubMilestoneMapper = DataMapper<GitHubMilestone, GitHubMilestoneClient>()
+                .register("state", gitHubMilestoneStateMapper)
             val githubIssueClient = DataMapper<GitHubIssueLabel, GitHubIssueLabelClient>()
 
             val githubIssueMapper = DataMapper<GitHubIssue, GitHubIssueClient>()
@@ -75,7 +126,8 @@ danger(args) {
                 .register("assignee", githubUserMapper)
                 .register("assignees", arrayToListMapper(githubUserMapper))
                 .register("milestone", gitHubMilestoneMapper)
-                .register("labels", githubIssueClient)
+                .register("labels", arrayToListMapper(githubIssueClient))
+                .register("state", gitHubIssueStateMapper)
 
             val githubRepoMapper = DataMapper<GitHubRepo, GitHubRepoClient>()
             val githubMergeRefMapper = DataMapper<GitHubMergeRef, GitHubMergeRefClient>()
@@ -92,8 +144,10 @@ danger(args) {
                 .register("head", githubMergeRefMapper)
                 .register("base", githubMergeRefMapper)
                 .register("milestone", gitHubMilestoneMapper)
+                .register("state", gitHubPullRequestStateMapper)
             val githubReviewMapper = DataMapper<GitHubReview, GitHubReviewClient>()
                 .register("user", githubUserMapper)
+                .register("state", gitHubReviewStateMapper)
             val gitHubRequestedReviewersMapper = DataMapper<GitHubRequestedReviewers, GitHubRequestedReviewersClient>()
                 .register("users", arrayToListMapper(githubUserMapper))
                 .register("teams", arrayToListMapper(githubTeamMapper))

@@ -60,6 +60,9 @@ class DataMapper<I : Any, O : Any>(private val inType: KClass<I>, private val ou
     }
 
     override fun invoke(data: I): O = with(outConstructor) {
-        callBy(parameters.associateWith { argFor(it, data) })
+        callBy(parameters.associateWith {
+            println("Params -> ${it.name} of ${data.javaClass.simpleName}")
+            argFor(it, data)
+        })
     }
 }
