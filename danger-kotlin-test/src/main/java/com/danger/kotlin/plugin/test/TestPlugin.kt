@@ -3,6 +3,8 @@ package com.danger.kotlin.plugin.test
 import com.danger.kotlin.plugin.test.internal.InternalReport
 import com.danger.kotlin.plugin.test.internal.InternalReportPlugin
 import com.danger.kotlin.plugin.test.jacoco.JacocoReportPlugin
+import com.danger.kotlin.plugin.test.model.Git
+import com.danger.kotlin.plugin.test.model.GitHub
 import systems.danger.kotlin.sdk.DangerPlugin
 
 object TestPlugin : DangerPlugin() {
@@ -15,7 +17,32 @@ object TestPlugin : DangerPlugin() {
     override val id: String
         get() = this.javaClass.name
 
+    var gitInfo: Git? = null
+    var gitHubInfo: GitHub? = null
+
+    fun initGit(block: () -> Git) {
+        gitInfo = block()
+    }
+
+    fun initGitHub(block: () -> GitHub) {
+        gitHubInfo = block()
+    }
+
     fun execute() {
+        gitHubInfo?.let {
+            if ((it.pullRequest.additions ?: 0) - (it.pullRequest.deletions ?: 0) > 300) {
+                context.warn("Big PR, try to keep changes smaller if you can")
+            }
+
+            // Work in progress check
+            if (it.pullRequest.title.contains("WIP", false)) {
+                context.warn("PR is classed as Work in Progress")
+            }
+
+            context.message("Great work @${it.pullRequest.user.login} 🎉 , You might find a few suggestions from me for this Pull Request below 🙂")
+        }
+
+
         internalReportPlugins.forEach {
             when (val report = it.report()) {
                 is InternalReport.Warn -> {
