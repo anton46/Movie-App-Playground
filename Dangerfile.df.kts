@@ -4,6 +4,7 @@ import com.danger.kotlin.plugin.test.TestPlugin
 import com.danger.kotlin.plugin.test.model.DataMapper
 import com.danger.kotlin.plugin.test.model.Mapper
 import com.danger.kotlin.plugin.test.model.DataMapper.Companion.arrayToListMapper
+import com.danger.kotlin.plugin.test.model.DataMapper.Companion.listMapper
 import systems.danger.kotlin.*
 
 typealias GitHubClient = com.danger.kotlin.plugin.test.model.GitHub
@@ -26,6 +27,7 @@ typealias GitHubMilestoneStateClient = com.danger.kotlin.plugin.test.model.GitHu
 typealias GitClient = com.danger.kotlin.plugin.test.model.Git
 typealias GitCommitClient = com.danger.kotlin.plugin.test.model.Git.GitCommit
 typealias GitCommitAuthorClient = com.danger.kotlin.plugin.test.model.Git.GitCommitAuthor
+typealias GitFilePathClient = com.danger.kotlin.plugin.test.model.FilePath
 
 register plugin TestPlugin
 
@@ -52,11 +54,11 @@ danger(args) {
         TestPlugin.execute()
     }*/
 
-
     val gitCommitAuthorMapper = DataMapper<GitCommitAuthor, GitCommitAuthorClient>()
     val gitCommitMapper = DataMapper<GitCommit, GitCommitClient>()
         .register("author", gitCommitAuthorMapper)
         .register("committer", gitCommitAuthorMapper)
+        .register("parents", arrayToListMapper<String>())
 
     val gitHubUserTypeMapper = object : Mapper<GitHubUserType, GitHubUserTypeClient> {
         override fun invoke(data: GitHubUserType) = when (data) {
@@ -101,16 +103,18 @@ danger(args) {
         }
     }
 
-    /*onGit {
+    onGit {
+        val gitFilePathMapper = DataMapper<FilePath, GitFilePathClient>()
+
         TestPlugin.initGit {
             val gitMapper = DataMapper<Git, GitClient>()
-                .register("commits", arrayToListMapper(gitCommitMapper))
-                .register("modifiedFiles", arrayToListMapper<String>())
-                .register("createdFiles", arrayToListMapper<String>())
-                .register("deletedFiles", arrayToListMapper<String>())
+                .register("commits", listMapper(gitCommitMapper))
+                .register("modifiedFiles", arrayToListMapper(gitFilePathMapper))
+                .register("createdFiles", arrayToListMapper(gitFilePathMapper))
+                .register("deletedFiles", arrayToListMapper(gitFilePathMapper))
             gitMapper(this)
         }
-    }*/
+    }
 
     onGitHub {
         TestPlugin.initGitHub {

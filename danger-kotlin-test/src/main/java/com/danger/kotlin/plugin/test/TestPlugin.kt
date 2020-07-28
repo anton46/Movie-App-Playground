@@ -42,7 +42,6 @@ object TestPlugin : DangerPlugin() {
             context.message("Great work @${it.pullRequest.user.login} 🎉 , You might find a few suggestions from me for this Pull Request below 🙂")
         }
 
-
         internalReportPlugins.forEach {
             when (val report = it.report()) {
                 is InternalReport.Warn -> {
