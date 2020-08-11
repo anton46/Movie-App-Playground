@@ -17,5 +17,10 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run:
-      - ./gradlew build jacocoDebugUnitTestReport
+      run: ./gradlew build jacocoDebugUnitTestReport
+    - name: Danger
+      uses: danger/kotlin@0.6.0
+      with:
+        args: "--id DangerKotlinAction"
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

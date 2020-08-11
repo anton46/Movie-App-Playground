@@ -6,7 +6,7 @@ import com.movie.app.ui.home.model.HomeViewModel
 import com.movie.app.ui.home.model.MovieViewModel
 
 class HomeViewModelMapper(private val imageUrlFactory: ImageUrlFactory) : IHomeViewModelMapper {
-    override fun map(moviesResponse: MoviesResponse) =
+    override fun map(moviesResponse: MoviesResponse)=
         moviesResponse.results
             .filter { it.posterUrl != null }
             .map {
@@ -17,7 +17,7 @@ class HomeViewModelMapper(private val imageUrlFactory: ImageUrlFactory) : IHomeV
                     it.popularity
                 )
             }
-            .toHomeViewModel()
+             .toHomeViewModel()
 
     private fun List<MovieViewModel>.toHomeViewModel() = HomeViewModel(this)
 }

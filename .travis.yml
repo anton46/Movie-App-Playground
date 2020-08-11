@@ -23,7 +23,12 @@ before_install:
   - touch $HOME/.android/repositories.cfg
   - yes | sdkmanager "platforms;android-28"
   - yes | sdkmanager "build-tools;28.0.3"
-  - bundle install
+  - curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+  - sudo apt-get install nodejs
+  - sudo apt-get install build-essential
+  - sudo npm install -g danger@10.x
+  - curl -s "https://raw.githubusercontent.com/danger/kotlin/master/scripts/install.sh" | bash
+  - source ~/.bash_profile
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -37,11 +42,14 @@ cache:
 
 before_script:
   - chmod +x gradlew
+  - sudo chmod -R a+rwx /usr/local/
 
 script:
+  #- ./gradlew runChecksForDanger
   - ./gradlew build jacocoDebugUnitTestReport
-  - gem install danger-jacoco
-  - bundle exec danger
+  -  danger-kotlin ci
+  #- gem install danger-jacoco
+  #- bundle exec danger
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 06eb5559-6e59-48a5-be6d-d66344371c60

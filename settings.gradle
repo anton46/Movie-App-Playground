@@ -1,1 +1,2 @@
+include ':danger-kotlin-test'
 include ':app'
