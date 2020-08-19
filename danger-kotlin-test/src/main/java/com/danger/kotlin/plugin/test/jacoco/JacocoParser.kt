@@ -21,7 +21,7 @@ object JacocoParser {
     private const val COUNTER_ATTRIBUTE_INSTRUCTION_VALUE = "INSTRUCTION"
     private const val CLASS_TAG_NAME = "class"
     private const val CLASS_ATTRIBUTE_NAME = "name"
-    private const val PATH_DELIMITER = "/kotlin/"
+    private const val PATH_DELIMITER = "/java/"
 
     private val classesCoverage = mutableSetOf<ClassCoverage>()
 
