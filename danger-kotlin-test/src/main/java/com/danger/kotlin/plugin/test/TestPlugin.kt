@@ -20,13 +20,17 @@ object TestPlugin : DangerPlugin() {
     var gitInfo: Git? = null
     var gitHubInfo: GitHub? = null
 
-    fun initGit(block: () -> Git) {
+    inline fun initGit(block: () -> Git) {
         gitInfo = block()
     }
 
-    fun initGitHub(block: () -> GitHub) {
+    inline fun initGitHub(block: () -> GitHub) {
         gitHubInfo = block()
     }
+
+    internal inline fun onGit(onGit: Git.() -> Unit) = gitInfo?.run { onGit(this) }
+
+    internal inline fun onGitHub(onGitHub: GitHub.() -> Unit) = gitHubInfo?.run { onGitHub(this) }
 
     fun execute() {
         gitHubInfo?.let {
