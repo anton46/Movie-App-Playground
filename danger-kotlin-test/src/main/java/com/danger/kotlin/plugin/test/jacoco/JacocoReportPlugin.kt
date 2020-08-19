@@ -11,7 +11,7 @@ object JacocoReportPlugin : InternalReportPlugin {
             null -> InternalReport.Fail("No coverage report found")
             else -> {
                 val configuration = getCoverageConfiguration()
-                var reportMarkdown = "### Jacoco code coverage ${coverage.projectCoverage.coverage} % ${getCoverageIconStatus(coverage.projectCoverage.coverage, configuration.minimumProjectCoverage)}"
+                var reportMarkdown = "### Jacoco code coverage ${coverage.projectCoverage.coverage} % ${getCoverageIconStatus(coverage.projectCoverage.coverage, configuration.minimumProjectCoverage)}\n"
                 coverage.classCoverages.forEach {
                     reportMarkdown += "|:---|:---:|:---:|:---:|\n"
                     reportMarkdown += "| ${it.path} | ${it.coverage} |${it.coverage} | ${getCoverageIconStatus(it.coverage, configuration.minimumClassCoverage)} |\n"

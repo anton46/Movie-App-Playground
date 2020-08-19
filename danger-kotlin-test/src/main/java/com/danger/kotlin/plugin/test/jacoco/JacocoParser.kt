@@ -39,8 +39,11 @@ object JacocoParser {
             val projectCoverage = ProjectCoverage(getCoverage(rootElement))
 
             onGit {
+                println(modifiedFiles)
                 val affectedClasses = (modifiedFiles + createdFiles)
-                    .filter { it.endsWith(".kt") }
+                    .filter {
+                        it.endsWith(".kt")
+                    }
                     .map {
                         it.split(".").first().split(PATH_DELIMITER)[1]
                     }
