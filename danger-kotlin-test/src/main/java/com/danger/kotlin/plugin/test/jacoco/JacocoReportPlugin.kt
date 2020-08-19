@@ -15,7 +15,7 @@ object JacocoReportPlugin : InternalReportPlugin {
                 reportMarkdown += "| Class | Covered | Meta | Status |\n"
                 reportMarkdown += "|:---|:---:|:---:|:---:|\n"
                 coverage.classCoverages.forEach {
-                    reportMarkdown += "| ${it.path} | ${it.coverage} |${configuration.minimumClassCoverage} | ${getCoverageIconStatus(it.coverage, configuration.minimumClassCoverage)} |\n"
+                    reportMarkdown += "| ${it.path} | ${it.coverage}% |${configuration.minimumClassCoverage}% | ${getCoverageIconStatus(it.coverage, configuration.minimumClassCoverage)} |\n"
                 }
                 InternalReport.Markdown(reportMarkdown)
             }
