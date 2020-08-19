@@ -40,7 +40,10 @@ object JacocoParser {
 
             onGit {
                 val affectedClasses = (modifiedFiles + createdFiles)
-                    .map { it.split(".").first().split(PATH_DELIMITER)[1] }
+                    .filter { it.endsWith(".kt") }
+                    .map {
+                        it.split(".").first().split(PATH_DELIMITER)[1]
+                    }
                     .toSet()
 
                 for (x in 0 until rootElement.childNodes.length) {
@@ -51,8 +54,10 @@ object JacocoParser {
                     }
                 }
             }
+            println(classesCoverage)
             return Coverage(projectCoverage, classesCoverage)
         } catch (e: Exception) {
+            e.printStackTrace()
             return null
         }
     }
