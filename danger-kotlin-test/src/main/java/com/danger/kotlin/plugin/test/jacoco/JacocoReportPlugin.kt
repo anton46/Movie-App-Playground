@@ -12,9 +12,10 @@ object JacocoReportPlugin : InternalReportPlugin {
             else -> {
                 val configuration = getCoverageConfiguration()
                 var reportMarkdown = "### Jacoco code coverage ${coverage.projectCoverage.coverage} % ${getCoverageIconStatus(coverage.projectCoverage.coverage, configuration.minimumProjectCoverage)}\n"
+                reportMarkdown += "| Class | Covered | Meta | Status |\n"
+                reportMarkdown += "|:---|:---:|:---:|:---:|\n"
                 coverage.classCoverages.forEach {
-                    reportMarkdown += "|:---|:---:|:---:|:---:|\n"
-                    reportMarkdown += "| ${it.path} | ${it.coverage} |${it.coverage} | ${getCoverageIconStatus(it.coverage, configuration.minimumClassCoverage)} |\n"
+                    reportMarkdown += "| ${it.path} | ${it.coverage} |${configuration.minimumClassCoverage} | ${getCoverageIconStatus(it.coverage, configuration.minimumClassCoverage)} |\n"
                 }
                 InternalReport.Markdown(reportMarkdown)
             }
